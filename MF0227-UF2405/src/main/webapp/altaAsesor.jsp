@@ -26,9 +26,9 @@
         <div>
             <label for="contrato">Relación Contractual:</label>
             <select name="contrato" id="contrato">
-                <option value="autonomo">Autónomo</option>
-                <option value="asalariado fijo">Asalariado fijo</option>
-                <option value="asalariado a comision">Asalariado a Comisión</option>
+                <option value="Autonomo">Autónomo</option>
+                <option value="Asalariado fijo">Asalariado fijo</option>
+                <option value="Asalariado a comision">Asalariado a Comisión</option>
             </select>
         </div>
         <div>
