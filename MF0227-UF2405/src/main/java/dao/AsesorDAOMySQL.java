@@ -174,4 +174,45 @@ public class AsesorDAOMySQL implements AsesorDAO {
 
 	}
 
+	@Override
+	public int insertarAsesor(Asesor a) {
+		Connection c = conexion.getConexion();
+		PreparedStatement consulta = null;
+		int resultado=0;
+		
+		try {
+			consulta = c.prepareStatement("insert into asesores values (?,?,?,?,?,?,?,?)");
+			
+			consulta.setString(1, a.getDni());
+			consulta.setString(2, a.getNombre());
+			consulta.setString(3, a.getApellidos());
+			consulta.setString(4, a.getContrato());
+			consulta.setBoolean(5, a.isCoche());
+			consulta.setBoolean(6, a.isHogar());
+			consulta.setBoolean(7, a.isDecesos());
+			consulta.setInt(8, a.getNumVentas());
+			resultado= consulta.executeUpdate();
+			System.out.println("Asesor insertado correctamente");
+				
+			
+			
+		} catch (SQLException e) {
+			System.out.println("Error insertando asesor");
+			e.printStackTrace();
+		} finally {
+			
+			try {
+			
+				consulta.close();
+				conexion.desconectar();
+				
+			} catch (SQLException e) {
+				// TODO Bloque catch generado automáticamente
+				e.printStackTrace();
+			}
+			
+		}		
+		return resultado;
+	}
+
 }
